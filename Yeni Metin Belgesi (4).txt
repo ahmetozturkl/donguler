@@ -1,0 +1,213 @@
+
+//For Örnekleri
+package döngüler;
+
+public class ForLoop01 { public static void main(String[] args) {
+    for (int s = 4; s < 8; s++) {
+        System.out.println("Ahmet, Döngüler konusunu anlatıyor.");
+    }
+}
+}
+
+//5 'e kadar pozitif tamsayıları for döngüsü ile toplar
+package döngüler;
+class ForLoop02 {
+public static void main(String[] args) {
+ int sum = 0;
+ for (int i = 0; i <= 5; i++) {
+ sum = sum + i;
+ System.out.printf("%d'e kadar toplam: %d %n", i, sum);
+ }
+ }
+} 
+
+Break Continue
+
+// break ve continue kullanımı
+package döngüler;
+class BreakContinue01 {
+public static void main(String[] args) {
+ for (int d = 0; d < 20; d++) {
+ if (d == 14)
+ break;
+ if (d % 2 == 0)
+ continue;
+ System.out.printf("\t %d ", d);
+ }
+ System.out.println();
+ }
+} 
+
+//While Döngüsü
+
+package döngüler;
+class WhileLoop01 {
+    public static void main(String[] args) {
+        int n = 1; // Sayılar için değişken
+        char ch = 'A'; // Harfler için değişken
+        while (n <= 10) {
+            System.out.printf("%d - %c %n", n, ch);
+            n++;
+            ch++;
+        }
+    }
+}
+
+//Do-While Döngüsü
+
+package döngüler;
+import java.util.Scanner;
+class DoWhile01 {
+public static void main(String[] args) {
+ int istek;
+Scanner scan = new Scanner(System.in);
+ do {
+ // Bir menü yazar
+ System.out.println("Adres Defteri \n");
+ System.out.println("1 - Yeni adres gir");
+ System.out.println("2 - Adres sil");
+ System.out.println("3 - Adres güncelle");
+ System.out.println("4 - Adres gör");
+ System.out.println("5 - Çıkış \n");
+ System.out.println("Seçiminiz: (1,2,3,4,5): ");
+ // Kullanıcının isteğini oku
+ istek = scan.nextInt();
+ // Kullanıcının isteğini yap
+ switch (istek) {
+ case 1:
+ System.out.println("Yeni adres eklemek mi istiyorsunuz?");
+ break;
+ case 2:
+ System.out.println("Bir adres silecek misiniz?");
+ break;
+ case 3:
+ System.out.println("Bir adres güncelleyecek misiniz?");
+ break;
+ case 4:
+ System.out.println("Bir adres mi göreceksiniz?");
+ break;
+ case 5:
+ System.out.println("Hoşça kal!");
+ break;
+ default:
+ System.out.printf("%d geçerli bir seçim değildir %n", istek);
+ break;
+ }
+ // DOS ekranını bekleterek çıktının okunmasını sağlar
+ System.out.println("Devam için bir tuşa basınız...");
+ istek = scan.nextInt();
+ System.out.println();
+ // Çıkış tusuna (5) basılana kadar döngüyü tekrarlatan boolean
+ } while (istek != 5);
+ }
+} 
+
+
+//For Each Döngüsü 
+package döngüler;
+class ForEach01 {
+public static void main(String[] args) {
+ int n = 1, w = 1;
+ char[] ch = { 'A', 'n', 'k', 'a', 'r', 'a' };
+ for (char c : ch) {
+ w = w * n;
+ n++;
+ }
+ System.out.println(w);
+ }
+} 
+
+//Örnek
+
+package döngüler;
+class PascalTriangle {
+
+    public static void main(String[] args) {
+        int n = 6; // Pascal Üçgeninin kaç satır olacağı
+        printPascalTriangle(n);
+    }
+
+    public static void printPascalTriangle(int n) {
+        int[][] triangle = new int[n][n];
+
+        for (int i = 0; i < n; i++) {
+            // Her satırın ilk ve son elemanı 1'dir
+            triangle[i][0] = 1;
+            triangle[i][i] = 1;
+
+            // Ara elemanlar, üstteki satırın iki elemanının toplamına eşittir
+            for (int j = 1; j < i; j++) {
+                triangle[i][j] = triangle[i-1][j-1] + triangle[i-1][j];
+            }
+        }
+
+        // Pascal Üçgenini yazdırma
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j <= i; j++) {
+                System.out.print(triangle[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+}
+
+//Asal Çarpanları Bulma Örneği
+class PrimeFactors { 
+
+  
+
+    public static void main(String[] args) { 
+
+        int number = 315; // Çarpanlarını bulmak istediğiniz sayı 
+
+        System.out.println("Asal çarpanlar: "); 
+
+        printPrimeFactors(number); 
+
+    } 
+
+  
+
+    public static void printPrimeFactors(int number) { 
+
+        // 2'ye bölerek tüm çift çarpanları çıkar 
+
+        while (number % 2 == 0) { 
+
+            System.out.print(2 + " "); 
+
+            number /= 2; 
+
+        } 
+
+  
+
+        // Şimdi sayı tek 
+
+        for (int i = 3; i <= Math.sqrt(number); i += 2) { 
+
+            // i ile bölünebildiği sürece devam et 
+
+            while (number % i == 0) { 
+
+                System.out.print(i + " "); 
+
+                number /= i; 
+
+            } 
+
+        } 
+
+  
+
+        // Eğer sayı bir asal sayı olarak kaldıysa 
+
+        if (number > 2) { 
+
+            System.out.print(number); 
+
+        } 
+
+    } 
+
+} 
